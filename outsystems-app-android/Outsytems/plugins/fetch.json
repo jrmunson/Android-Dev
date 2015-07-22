@@ -1,0 +1,8 @@
+{
+    "com.os.mobile.facebooktoken": {
+        "source": {
+            "type": "local",
+            "path": "/Users/jppg/Development/OutSystems/outsystems-plugins-facebook-token"
+        }
+    }
+}

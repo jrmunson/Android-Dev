@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Video</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
+    <script type="text/javascript" charset="utf-8">
+         var statusDom; // Update Upload Status
+         var videoSource;   // video source
+         var destinationType; // sets the format of returned value
+         
+         // Wait for device API libraries to load
+         //
+         document.addEventListener("deviceready",onDeviceReady,false);
+         
+         // device APIs are available
+         //
+         function onDeviceReady() {
+             videoSource=navigator.camera.PictureSourceType;
+             destinationType=navigator.camera.DestinationType;
+         
+             statusDom = document.querySelector('#status');
+         }
+         
+         // Called when a video is successfully retrieved
+         //
+         function onVideoURISuccess(videoURI) {
+         alert (videoURI);
+         
+         alert ('callBackSuccess');
+         var filename = videoURI.substring(videoURI.lastIndexOf('/')+1);
+         alert ('File Name --> ' +filename);
+         var mediaFile = new MediaFile();
+         mediaFile.name = filename + ".mp4";
+         mediaFile.fullPath = videoURI;
+         uploadFile(mediaFile);
+         }
+         
+         function getVideo(source) {
+         // Retrieve video file location from specified source
+         navigator.camera.getPicture(onVideoURISuccess, onFail, { enquality: 50,
+                                     destinationType: destinationType.FILE_URI,
+                                     sourceType: source,
+                                     mediaType: navigator.camera.MediaType.VIDEO});
+         }
+         
+         // Called if something bad happens.
+         //
+         function onFail(message) {
+         alert('Failed because: ' + message);
+         }
+         
+         function captureSuccess(mediaFiles) {
+         var i, len;
+         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+             uploadFile(mediaFiles[i]);
+             alert (mediaFiles[i].fullPath);
+         }
+         }
+         
+         // Called if something bad happens.
+         //
+         function captureError(error) {
+         var msg = 'An error occurred during capture: ' + error.code;
+         navigator.notification.alert(msg, null, 'Uh oh!');
+         }
+         
+         // A button will call this function
+         //
+         function captureVideo() {
+         // Launch device video recording application,
+         // allowing user to capture up to 1 video clips
+         navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1, duration: 5});
+         }
+         
+         // Upload files to server
+         function uploadFile(mediaFile) {
+         var ft = new FileTransfer(),
+         path = mediaFile.fullPath,
+         name = mediaFile.name;
+         
+         var headersToUpload= {'Content-Range': 'bytes 0-1048575/4177131', 'Content-Disposition': 'attachment; filename="'+name+'"', 'Content-Key':'VIDEO_KEY'};
+         //var headersToUpload= {'Content-Key':'VIDEO_KEY'};
+         
+         ft.onprogress = function(progressEvent) {
+             if (progressEvent.lengthComputable) {
+                 var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+                 statusDom.innerHTML = perc + "% Uploaded...";
+             } else {
+                 if(statusDom.innerHTML == "") {
+                     statusDom.innerHTML = "Upload";
+                 } else {
+                     statusDom.innerHTML += ".";
+                 }
+             }
+         };
+         
+         ft.upload(path,
+                   "http://dev.on3app.com/Mob_Common/FileUploadHandlerEntry.aspx",
+                   function(result) {
+                   console.log('Upload success: ' + result.responseCode);
+                   console.log(result.bytesSent + ' bytes sent');
+                   alert('Upload Success');
+                   },
+                   function(error) {
+                   alert ('Error uploading file ' + path + ': ' + error.code);
+                   console.log('Error uploading file ' + path + ': ' + error.code);
+                   },
+                   { fileName: name, mimeType:'video/mp4', chunkedMode: true, headers: headersToUpload });
+         }
+         
+      </script>
+</head>
+<body>
+<button onclick="captureVideo();">Capture Video</button> <br>
+<button onclick="getVideo(videoSource.PHOTOLIBRARY);">From Video Library</button><br>
+<button onclick="getVideo(videoSource.SAVEDPHOTOALBUM);">From Video Album</button><br>
+<div id="status"></div>
+<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+<img style="display:none;" id="largeImage" src="" />
+</body>
+</html>

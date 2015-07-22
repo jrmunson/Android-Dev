@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="com.common.actions"
+      version="1.0.0">
+    <name>Common Actions</name>
+    <description>Common Actions Plugn for Utils interations between Web and Native Applications</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,outsystems</keywords>
+    <repo></repo>
+    <issue></issue>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="CommonActionsPlugin">
+                <param name="ios-package" value="CommonActionsPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/CommonActionsPlugin.h" />
+        <source-file src="src/ios/CommonActionsPlugin.m" />
+    </platform>
+
+    <!-- Android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CommonActionsPlugin">
+                <param name="android-package" value="com.common.actions.CommonActionsPlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/CommonActionsPlugin.java" target-dir="src/com/common/actions" />
+    </platform>
+
+</plugin>

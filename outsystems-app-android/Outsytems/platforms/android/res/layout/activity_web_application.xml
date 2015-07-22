@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <com.outsystems.android.core.CustomWebView
+        android:id="@+id/mainView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/divider_toolbar" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/divider_toolbar"
+        android:contentDescription="@string/image_logo"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/view_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="15dp" >
+
+        <ImageView
+            android:id="@+id/imageLayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/loading_background"/>
+
+        <ImageView
+            android:id="@+id/imageLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            android:background="@drawable/loading_circle"/>
+
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/loading_iconlogo"/>
+
+        <ProgressBar
+            android:id="@+id/loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <com.outsystems.android.widgets.CustomFontTextView
+            android:id="@+id/text_view_title_hub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/label_loading"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:visibility="gone"
+            custom:fontStyle="Regular" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/view_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@color/background_image_application_color"
+        android:layout_above="@+id/divider_toolbar">
+
+        <com.outsystems.android.widgets.CustomFontTextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/error_icon"
+            android:drawablePadding="20dp"
+            android:textSize="16sp"
+            android:text="@string/error_message"
+            custom:fontStyle="Bold"/>
+
+        <Button
+            android:id="@+id/button_try_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/button_retry" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/toolbar"
+        android:background="@color/button_disable" />
+
+    <include
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        layout="@layout/toolbar_web_application" >
+    </include>
+
+    <!-- <LinearLayout -->
+    <!-- android:id="@+id/toolbar" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignParentBottom="true" -->
+    <!-- android:background="@android:color/white" -->
+    <!-- android:gravity="center_vertical" -->
+    <!-- android:orientation="horizontal" > -->
+
+
+    <!-- <Button -->
+    <!-- android:id="@+id/button_back" -->
+    <!-- android:layout_width="35dp" -->
+    <!-- android:layout_height="35dp" -->
+    <!-- android:layout_margin="10dp" -->
+    <!-- android:background="@drawable/icon_chevron_back" /> -->
+
+
+    <!-- <Button -->
+    <!-- android:id="@+id/button_forth" -->
+    <!-- android:layout_width="35dp" -->
+    <!-- android:layout_height="35dp" -->
+    <!-- android:layout_margin="10dp" -->
+    <!-- android:layout_marginLeft="30dp" -->
+    <!-- android:background="@drawable/icon_chevron_forth" /> -->
+
+
+    <!-- <LinearLayout -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:gravity="right|center_vertical" > -->
+
+
+    <!-- <Button -->
+    <!-- android:id="@+id/button_applications" -->
+    <!-- android:layout_width="35dp" -->
+    <!-- android:layout_height="35dp" -->
+    <!-- android:layout_margin="10dp" -->
+    <!-- android:background="@drawable/icon_apps" /> -->
+    <!-- </LinearLayout> -->
+    <!-- </LinearLayout> -->
+
+</RelativeLayout>

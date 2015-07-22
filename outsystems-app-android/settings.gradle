@@ -1,0 +1,5 @@
+include ':android-support-v7-appcompat'
+include ':AndroidUniversalImageLoaderLib'
+include ':Outsytems:platforms:android'
+include ':Outsytems:plugins:com.phonegap.plugins.barcodescanner:src:android:LibraryProject'
+include ':Outsytems:platforms:android:CordovaLib'

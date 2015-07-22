@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="D:\Program Files\Android\Android Studio\gradle\gradle-2.2.1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AndroidUniversalImageLoaderLib" />
+            <option value="$PROJECT_DIR$/Outsytems" />
+            <option value="$PROJECT_DIR$/Outsytems/platforms" />
+            <option value="$PROJECT_DIR$/Outsytems/platforms/android" />
+            <option value="$PROJECT_DIR$/Outsytems/platforms/android/CordovaLib" />
+            <option value="$PROJECT_DIR$/Outsytems/plugins" />
+            <option value="$PROJECT_DIR$/Outsytems/plugins/com.phonegap.plugins.barcodescanner" />
+            <option value="$PROJECT_DIR$/Outsytems/plugins/com.phonegap.plugins.barcodescanner/src" />
+            <option value="$PROJECT_DIR$/Outsytems/plugins/com.phonegap.plugins.barcodescanner/src/android" />
+            <option value="$PROJECT_DIR$/Outsytems/plugins/com.phonegap.plugins.barcodescanner/src/android/LibraryProject" />
+            <option value="$PROJECT_DIR$/android-support-v7-appcompat" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
+
